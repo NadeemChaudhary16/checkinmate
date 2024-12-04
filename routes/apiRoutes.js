@@ -1,11 +1,12 @@
 const express = require("express");
 const { handleRegistration } = require("../controllers/registerController");
-const { handleCheckInOut } = require("../controllers/checkInOutController");
+const { handleCheckIn } = require("../controllers/checkInController");
+const { handleCheckOut } = require("../controllers/checkOutController");
 
 const router = express.Router();
 
 router.post("/register", handleRegistration);
-router.post("/check-in", (req, res) => handleCheckInOut(req, res, "check-in"));
-router.post("/check-out", (req, res) => handleCheckInOut(req, res, "check-out"));
+router.post("/check-in", handleCheckIn);
+router.post("/check-out", handleCheckOut);
 
 module.exports = { apiRoutes: router };
